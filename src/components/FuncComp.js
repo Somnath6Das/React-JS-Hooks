@@ -1,13 +1,18 @@
 import React, { useState } from 'react'
 
 const FuncComp = () => {
-    const [ name, setName ] = useState("");
-    
+    function initialState () {
+      console.log("State Initialization");
+      return 0;
+    }
+    // arrow function in hooks doesn't rerender the state and can hold large amount of data.
+    const [counter, setCounter ] = useState(()=> initialState());
   return (
     <div>
         <h1>Functional Component short cut - Rafce</h1>
-        <h4>{name}</h4>
-        <button onClick={()=> setName("From Functional Component")}>Button</button>
+        <h2>{counter}</h2>
+        <button onClick={()=> setCounter(counter - 1)}>-</button>
+        <button onClick={()=> setCounter(counter + 1)}>+</button>
 
     </div>
   )

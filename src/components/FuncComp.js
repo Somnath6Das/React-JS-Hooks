@@ -1,23 +1,30 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 
 const FuncComp = () => {
     function initialState () {
       console.log("State Initialization");
       return 0;
     }
-    // arrow function in hooks doesn't rerender the state and can hold large amount of data.
-    const [counter, setCounter ] = useState(()=> initialState());
-    const [toggler, setToggler] = useState(false)
+   
+    // useEffect call when the page is render first time.
+    useEffect(() => {
+    // setInterval(()=> {console.log("set interval from useEffect hook")}, 1000) 
+    fetchUsers();
+    },[]);
+
+    const fetchUsers = async () => {
+      try{
+        const res = await fetch("https://jsonplaceholder.typicode.com/users");
+        const json = await res.json();
+        console.log(json);
+      } catch (error) {
+        console.log(error);
+      }
+    };
 
   return (
     <div>
         <h1>Functional Component short cut - Rafce</h1>
-        <h2>{counter}</h2>
-        <h1>{toggler.toString()}</h1>
-        <button onClick={()=> setToggler(!toggler)}>click toggler</button>
-        <br />
-        <button onClick={()=> setCounter(counter + 1)}>+</button>
-
     </div>
   )
 }

@@ -1,18 +1,18 @@
-import style from './App.css';
-import ClassComp from './components/ClassComp';
 import FuncComp from './components/FuncComp';
 
 function App() {
   return (
     <>
-    <div className={style.text_head}>
+    <div className='container'>
     <h1>React Hooks and Context API</h1>
-    <ClassComp/>
+    <div>
     <FuncComp/>
+    </div>
     </div>
     </>
   );
 }
+
 
 
 export default App;

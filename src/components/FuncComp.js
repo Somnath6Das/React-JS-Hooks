@@ -5,6 +5,7 @@ const FuncComp = () => {
     const inputRef = useRef('Somnath');
     console.log(inputRef);
     useEffect(() => {
+      // autofocus  on input after page refresh
       inputRef.current.focus();
     })
 

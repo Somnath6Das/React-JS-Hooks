@@ -1,30 +1,17 @@
-import React, { useState, useEffect } from 'react'
+import React, { useEffect, useRef } from 'react'
 
 const FuncComp = () => {
-    function initialState () {
-      console.log("State Initialization");
-      return 0;
-    }
-   
-    // useEffect call when the page is render first time.
+  
+    const inputRef = useRef('Somnath');
+    console.log(inputRef);
     useEffect(() => {
-    // setInterval(()=> {console.log("set interval from useEffect hook")}, 1000) 
-    fetchUsers();
-    },[]);
+      inputRef.current.focus();
+    })
 
-    const fetchUsers = async () => {
-      try{
-        const res = await fetch("https://jsonplaceholder.typicode.com/users");
-        const json = await res.json();
-        console.log(json);
-      } catch (error) {
-        console.log(error);
-      }
-    };
 
   return (
     <div>
-        <h1>Functional Component short cut - Rafce</h1>
+     <input type="text" ref={inputRef} onChange={()=> console.log(inputRef.current.value)}/>
     </div>
   )
 }

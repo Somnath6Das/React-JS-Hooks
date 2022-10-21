@@ -1,11 +1,12 @@
 import React from "react";
-import LayoutEffect from "./hooks/LayoutEffect"; 
+import User from "./components/User";
+
 
 function App() {
   return (
     <>
       <div className="container">
-       <LayoutEffect />
+             <User/>
       </div>
     </>
   );

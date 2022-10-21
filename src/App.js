@@ -1,11 +1,11 @@
 import React from "react";
-import Parent from "./components/Parent"
+import LayoutEffect from "./hooks/LayoutEffect"; 
 
 function App() {
   return (
     <>
       <div className="container">
-        <Parent />
+       <LayoutEffect />
       </div>
     </>
   );

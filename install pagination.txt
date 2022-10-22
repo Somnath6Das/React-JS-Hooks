@@ -1,0 +1,7 @@
+https://mui.com/material-ui/getting-started/installation/
+
+npm install @mui/material @emotion/react @emotion/styled
+
+
+
+https://mui.com/material-ui/react-pagination/#basic-pagination

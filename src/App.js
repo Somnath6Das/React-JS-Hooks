@@ -1,21 +1,24 @@
-import React, { useState } from "react";
-import "./App.css";
-import HomePage from "./Pages/HomePage";
-import { PostProvider } from "./context/PostContext";
+import React, { useState, useEffect } from "react";
+import Pages from "./components/Pages";
 
 function App() {
-  
+  const [data, setData] = useState([])
 
+  useEffect(() => {
+    const PaginationFunc =async () => {
+      const res = await fetch("https://jsonplaceholder.typicode.com/posts");
+      const data = await res.json();
+      setData(data);
+      console.log(data);
+    }
+    PaginationFunc();
+  },[])
   return (
-    <PostProvider>
-      <div className="App">
-        <h1>Navbar Section</h1>
-            <HomePage />
-        <h1>Footer Section</h1>       
-      </div>
-    </PostProvider>
-      
-  );
+  <>
+  {
+   data.length > 0 ? <Pages data={data}/> : <p>Loading...</p> 
+  }
+  </>);
 }
 
 export default App;

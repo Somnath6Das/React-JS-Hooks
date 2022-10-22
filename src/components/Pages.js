@@ -1,6 +1,6 @@
 import React from "react";
 import Pagination from "@mui/material/Pagination";
-import { usePagination } from './../hooks/pagination';
+import { usePagination } from '../hooks/Pagination';
 
 const Pages = ({ data }) => {
   const [

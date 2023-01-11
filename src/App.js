@@ -1,24 +1,21 @@
-import React, { useState, useEffect } from "react";
-import Pages from "./components/Pages";
+import React, { useState } from "react";
+import axios from "axios";
 
 function App() {
-  const [data, setData] = useState([])
+  const [value, setValue] = useState([]);
 
-  useEffect(() => {
-    const PaginationFunc =async () => {
-      const res = await fetch("https://jsonplaceholder.typicode.com/posts");
-      const data = await res.json();
-      setData(data);
-      console.log(data);
-    }
-    PaginationFunc();
-  },[])
-  return (
-  <>
-  {
-   data.length > 0 ? <Pages data={data}/> : <p>Loading...</p> 
+  const fetchData = () => {
+    axios.get('https://somnath6das.github.io/api/data.json').then((res) => {
+      console.log(res);
+      setValue(res.data);
+    });
   }
-  </>);
+  return (
+    <>
+      <button className="btn btn-primary" onClick={()=>fetchData()}>Fetch Data</button>
+      {value.map((val) => { return (<h1 key={val.id}>{val.name}</h1> )})}
+    </>
+  );
 }
 
 export default App;
